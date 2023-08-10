@@ -16,7 +16,9 @@
 - name: Install ePO
   ansible.windows.win_package:
     path: C:\ePO\Setup.exe
+    product_id: '{E2C3579A-6B3B-40F6-88E8-BE08E78C8D1A}'
     arguments:
+      - DISABLETLSV1=0
       - /qb 
       - MFSADMINUSERNAME_UE=CIARAdmin
       - MFSADMINPASSWORD_UE="{{ EPO_PASSWD }}"
@@ -38,6 +40,7 @@
       # - LICENSEKEY=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
       - ENABLETELEMETRY=0
       - DISABLEAH=0
+    state: present
 
 - name: Reboot machine
   ansible.windows.win_reboot:

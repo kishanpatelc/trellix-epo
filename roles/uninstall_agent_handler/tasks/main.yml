@@ -1,0 +1,4 @@
+---
+# tasks file for uninstall_agent_handler
+- name: Uninstall Agent Handler
+  ansible.builtin.import_tasks: uninstall.yml

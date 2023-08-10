@@ -1,2 +1,4 @@
 ---
 # tasks file for uninstall_epo
+- name: Uninstall ePO
+  ansible.builtin.import_tasks: uninstall.yml

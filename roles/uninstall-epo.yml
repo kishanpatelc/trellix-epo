@@ -1,0 +1,6 @@
+---
+- name: Uninstall ePO Play
+  hosts: epo_server
+  gather_facts: false
+  roles:
+    - uninstall_epo

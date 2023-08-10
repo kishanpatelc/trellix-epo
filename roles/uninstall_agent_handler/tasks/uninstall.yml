@@ -1,0 +1,9 @@
+---
+- name: Uninstall Agent Handler
+  ansible.windows.win_package:
+    product_id: '{72E9A6B1-F36E-4283-9867-A283B46D9C7D}'
+    state: absent
+
+# - name: Reboot machine
+#   ansible.windows.win_reboot:
+#     reboot_timeout_sec: 120
