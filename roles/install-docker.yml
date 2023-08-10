@@ -1,0 +1,8 @@
+---
+- name: Install ePO Play
+  hosts: epo_server
+  gather_facts: true
+  # vars:
+  #   ansible_remote_tmp: 
+  roles:
+    - docker

@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Kishan and Lei
+  description: Installs and configures Trellix ePO
+  role_name: epo
+  namespace: trellix_epo
+  company: Canada Revenue Agency
+  license: Apache
+  min_ansible_version: "2.9"
+  platforms:
+    - name: Win
+      versions:
+        - "2019"
+  galaxy_tags: []
+dependencies: []

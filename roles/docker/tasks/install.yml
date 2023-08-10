@@ -1,0 +1,12 @@
+---
+- name: Download Docker Desktop
+  ansible.windows.win_get_url:
+    url: https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
+    dest: C:\Temp\Docker Desktop Installer.exe
+# - name: Install Docker Desktop
+#   ansible.windows.win_package:
+#     path: C:\Temp\Docker Desktop Installer.exe
+#     arguments: install --quiet
+# - name: Reboot machine
+#     ansible.windows.win_reboot:
+#       reboot_timeout_sec: 120

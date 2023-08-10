@@ -1,0 +1,4 @@
+---
+# tasks file for epo
+- name: Install ePO
+  ansible.builtin.import_tasks: install.yml

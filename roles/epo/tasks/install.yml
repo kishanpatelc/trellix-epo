@@ -1,0 +1,44 @@
+- name: Creates ePO directory
+  ansible.windows.win_file:
+    path: C:\ePO\
+    state: directory
+- name: Copy .zip file to ePO
+  ansible.builtin.copy:
+    src: /tmp/EPO5100_ServicePack1_4098_LR1.zip
+    dest: C:\ePO\
+    permissions: 'full-control'
+- name: Unarchive .zip
+  community.windows.win_unzip:
+    src: 'C:\ePO\EPO5100_ServicePack1_4098_LR1.zip'
+    dest: 'C:\ePO\'
+    remote_src: yes
+
+- name: Install ePO
+  ansible.windows.win_package:
+    path: C:\ePO\Setup.exe
+    arguments:
+      - /qb 
+      - MFSADMINUSERNAME_UE=CIARAdmin
+      - MFSADMINPASSWORD_UE="{{ EPO_PASSWD }}"
+      - MFSADMINVERIFYPASSWORD_UE="{{ EPO_PASSWD }}"
+      - MFSDATABASESERVERNAME=10.0.80.5
+      - MFSDATABASEPORT=1433
+      - MFSDATABASENAME=epo-sql
+      - MFSDATABASEUSERNAME_UE=CIARAdmin
+      - MFSDATABASEPASSWORD_UE="{{ EPO_PASSWD }}"
+      - AGENTPORT=80 
+      - AGENTSECUREPORT=443
+      - TOMCATSECUREPORT=8443
+      - MFSDATABASEAUTHENTICATION=2
+      - SQLUDPPORTISENABLED=0
+      - IGNOREPROPINI=1
+      - SKIPAUTOPRODINST=1
+      - MFSKEYSTOREPASSWORD_UE="{{ EPO_PASSWD }}"
+      - MFSVERIYKEYSTOREPASSWORD="{{ EPO_PASSWD }}"
+      # - LICENSEKEY=XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+      - ENABLETELEMETRY=0
+      - DISABLEAH=0
+
+- name: Reboot machine
+  ansible.windows.win_reboot:
+    reboot_timeout_sec: 120

@@ -1,0 +1,20 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: windows-server-2022
+    image: mcr.microsoft.com/windows/server:ltsc2022
+    remote:
+      name: windows-server
+      host: 10.0.80.4
+      username: ciaradmin
+      password: 'Bhu89ijnmko01!'
+      connection_options:
+        ansible_connection_options:
+          ssh_args: "-o ForwardAgent=yes"
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
