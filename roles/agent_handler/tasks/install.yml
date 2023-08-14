@@ -1,0 +1,34 @@
+- name: Creates ePO directory
+  ansible.windows.win_file:
+    path: C:\ePO\
+    state: directory
+- name: Copy .zip file to ePO
+  ansible.builtin.copy:
+    src: /tmp/EPO5100_ServicePack1_4098_LR1.zip
+    dest: C:\ePO\
+    permissions: 'full-control'
+- name: Unarchive .zip
+  community.windows.win_unzip:
+    src: 'C:\ePO\EPO5100_ServicePack1_4098_LR1.zip'
+    dest: 'C:\ePO\'
+    remote_src: yes
+
+
+- name: Install Agent Handler
+  ansible.windows.win_package:
+    path: C:\ePO\AgentHandler\Setup.exe
+    arguments:
+      - /qn
+      - /lev!
+      - 'C:\AgentHandler\install.log'
+      - EPO_Server=10.0.80.4
+      - MFSADMINUSERNAME_UE=CIARAdmin
+      - MFSADMINPASSWORD_UE="{{ EPO_PASSWD }}"
+      - SQL_SERVER=10.0.80.5
+      - SQL_DATABASE=epo-sql
+      - SQL_USER=CIARAdmin
+      - SQL_PASSWORD="{{ EPO_PASSWD }}"
+      - EPO_PORT=8443
+      - APACHEPORT=80
+      - APACHESSLPORT=443
+    state: present

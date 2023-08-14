@@ -1,2 +1,4 @@
 ---
 # tasks file for agent_handler
+- name: Install Agent Handler
+  ansible.builtin.import_tasks: install.yml

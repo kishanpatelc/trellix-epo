@@ -1,0 +1,11 @@
+---
+- name: Install Agent Handler
+  hosts: agent_handler_server
+  gather_facts: false
+  vars_files:
+    - vault.yml
+  vars:
+    ansible_shell_type: powershell
+    ansible_shell_executable: 'C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe'
+  roles:
+    - agent_handler
