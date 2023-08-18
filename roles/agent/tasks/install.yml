@@ -1,0 +1,33 @@
+- name: Creates TrellixAgent directory
+  ansible.windows.win_file:
+    path: C:\TrellixAgent\
+    state: directory
+- name: Copy FramePkg.exe file to endpoint
+  ansible.builtin.copy:
+    src: /tmp/FramePkg.exe
+    dest: C:\TrellixAgent\
+    permissions: 'full-control'
+
+- name: Install Trellix Agent
+  ansible.windows.win_package:
+    path: C:\TrellixAgent\FramePkg.exe
+    arguments:
+      - /INSTALL=AGENT
+      - /SILENT
+    state: present
+
+- name: Make sure macmnsvc service is started 
+  ansible.windows.win_service_info:
+    name: macmnsvc
+  register: result
+  failed_when: result is not defined or result.exists != true or result.services[0].state != 'started'
+- name: Make sure masvc service is started 
+  ansible.windows.win_service_info:
+    name: masvc
+  register: result
+  failed_when: result is not defined or result.exists != true or result.services[0].state != 'started'
+- name: Make sure McAfeeFramework service is started 
+  ansible.windows.win_service_info:
+    name: McAfeeFramework
+  register: result
+  failed_when: result is not defined or result.exists != true

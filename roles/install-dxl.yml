@@ -1,0 +1,6 @@
+---
+- name: Install DXL Play
+  hosts: dxl_server
+  gather_facts: false
+  roles:
+    - dxl

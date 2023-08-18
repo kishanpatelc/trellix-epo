@@ -20,8 +20,8 @@
     arguments:
       - /qn
       - /lev!
-      - 'C:\AgentHandler\install.log'
-      - EPO_Server=10.0.80.4
+      - 'C:\ePO\AgentHandler\install.log'
+      - EPO_Server=10.0.80.16
       - MFSADMINUSERNAME_UE=CIARAdmin
       - MFSADMINPASSWORD_UE="{{ EPO_PASSWD }}"
       - SQL_SERVER=10.0.80.5

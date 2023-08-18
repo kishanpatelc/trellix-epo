@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include trellix.agent"
+      include_role:
+        name: "trellix.agent"

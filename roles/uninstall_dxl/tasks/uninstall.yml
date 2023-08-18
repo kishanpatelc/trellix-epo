@@ -1,0 +1,7 @@
+- name: Uninstall DXL
+  ansible.windows.win_package:
+    path: C:\DXL\dxlbrokersetup.exe
+    arguments:
+      - /quiet
+      - /uninstall
+    state: absent

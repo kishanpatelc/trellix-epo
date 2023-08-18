@@ -1,10 +1,35 @@
 [epo_server]
-windows-machine ansible_host=10.0.80.4 ansible_port=5985 ansible_connection=winrm ansible_user=ciaradmin ansible_password=Bhu89ijnmko01!
+windows-machine ansible_host=10.0.80.16 ansible_port=5985 ansible_connection=winrm ansible_user=ciaradmin ansible_password=Bhu89ijnmko01!
 
 [agent_handler_server]
-windows-machine ansible_host=10.0.80.11 ansible_port=5985 ansible_connection=winrm ansible_user=CIARAdmin ansible_password=Bhu89ijnmko01!
+10.0.80.10
+10.0.80.11
 
-#[containers]
-#e46913b37 ansible_connection=docker ansible_docker_extra_args="-H tcp://10.0.80.4:4243" ansible_user="" ansible_password=""
+[agent_handler_server:vars]
+ansible_connection=winrm
+ansible_port=5985
+ansible_user=CIARAdmin
+ansible_password=Bhu89ijnmko01!
+
+[dxl_server]
+10.0.80.10
+10.0.80.11
+
+[dxl_server:vars]
+ansible_connection=winrm
+ansible_port=5985
+ansible_user=CIARAdmin
+ansible_password=Bhu89ijnmko01!
+
+[endpoint]
+10.0.80.4
+
+[endpoint:vars]
+ansible_connection=winrm
+ansible_port=5985
+ansible_user=CIARAdmin
+ansible_password=Bhu89ijnmko01!
+
+
 
 

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include trellix.dxl"
+      include_role:
+        name: "trellix.dxl"

@@ -1,0 +1,4 @@
+---
+# tasks file for uninstall_agent
+- name: Uninstall Trellix
+  ansible.builtin.import_tasks: uninstall.yml

@@ -7,5 +7,11 @@
       # - msiexec
       # - /x
       # - '{E2C3579A-6B3B-40F6-88E8-BE08E78C8D1A}'
+      - /lev!
+      - 'C:\ePO\uninstall.log'
       - DROPTHEPRODUCTDATABASE=1
     state: absent
+
+- name: Reboot machine
+  ansible.windows.win_reboot:
+    reboot_timeout_sec: 120

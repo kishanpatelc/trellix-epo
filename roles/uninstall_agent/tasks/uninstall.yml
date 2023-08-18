@@ -1,0 +1,14 @@
+# - name: Uninstall Trellix Agent
+#   ansible.windows.win_package:
+#     path: C:\Program Files\McAfee\Agent\x86\FrmInst.exe
+#     arguments:
+      # - /FORCEUNINSTALL
+
+- name: Uninstall Trellix Agent
+  ansible.windows.win_package:
+    product_id: '{815B641D-6863-4663-8BEC-DE58E6C6B2D9}'
+    arguments:
+      - /lev!
+      - 'C:\TrellixAgent\uninstall.log'
+      - /FORCEUNINSTALL
+    state: absent

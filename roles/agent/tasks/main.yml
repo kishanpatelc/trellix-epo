@@ -1,0 +1,4 @@
+---
+# tasks file for agent
+- name: Install Trellix Agent
+  ansible.builtin.import_tasks: install.yml

@@ -1,0 +1,6 @@
+---
+- name: Uninstall DXL Play
+  hosts: dxl_server
+  gather_facts: false
+  roles:
+    - uninstall_dxl

@@ -1,0 +1,4 @@
+---
+# tasks file for dxl
+- name: Install DXL
+  ansible.builtin.import_tasks: install.yml

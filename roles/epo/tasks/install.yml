@@ -13,6 +13,14 @@
     dest: 'C:\ePO\'
     remote_src: yes
 
+- name: Drop database
+  community.general.mssql_db:
+    name: epo-sql
+    login_host: 10.0.80.5
+    login_user: CIARAdmin
+    login_password: "{{ EPO_PASSWD }}"
+    state: absent
+
 - name: Install ePO
   ansible.windows.win_package:
     path: C:\ePO\Setup.exe
@@ -20,9 +28,12 @@
     arguments:
       - DISABLETLSV1=0
       - /qb 
+      - /lev!
+      - 'C:\ePO\install.log'
       - MFSADMINUSERNAME_UE=CIARAdmin
       - MFSADMINPASSWORD_UE="{{ EPO_PASSWD }}"
       - MFSADMINVERIFYPASSWORD_UE="{{ EPO_PASSWD }}"
+      - MFSSKIPDATABASECREATION=0
       - MFSDATABASESERVERNAME=10.0.80.5
       - MFSDATABASEPORT=1433
       - MFSDATABASENAME=epo-sql
