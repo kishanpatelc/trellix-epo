@@ -1,0 +1,23 @@
+- name: Creates DXL directory
+  ansible.windows.win_file:
+    path: C:\DXL\
+    state: directory
+- name: Copy .zip file to DXL
+  ansible.builtin.copy:
+    src: '/tmp/DXLBroker_6.0.3_Build_990_Package_5_(ENU-LICENSED-RELEASE-MAIN).zip'
+    dest: C:\DXL\
+    permissions: 'full-control'
+- name: Unarchive .zip
+  community.windows.win_unzip:
+    src: 'C:\DXL\DXLBroker_6.0.3_Build_990_Package_5_(ENU-LICENSED-RELEASE-MAIN).zip'
+    dest: 'C:\DXL\'
+    remote_src: yes
+
+- name: Install DXL
+  ansible.windows.win_package:
+    path: C:\DXL\dxlbrokersetup.exe
+    arguments:
+      - 
+      - /quiet
+      - /install
+    state: present
