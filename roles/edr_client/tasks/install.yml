@@ -1,0 +1,24 @@
+- name: Creates EDRClient directory
+  ansible.windows.win_file:
+    path: C:\EDRClient\
+    state: directory
+
+- name: Copy Trellix_EDR_client_package file to endpoint
+  ansible.builtin.copy:
+    src: /tmp/Trellix_EDR_client_package_WIN_4.1.1.2850.zip
+    dest: C:\EDRClient\
+    permissions: 'full-control'
+
+- name: Unarchive .zip
+  community.windows.win_unzip:
+    src: 'C:\EDRClient\Trellix_EDR_client_package_WIN_4.1.1.2850.zip'
+    dest: 'C:\EDRClient\'
+    remote_src: yes
+
+- name: Install EDR Agent
+  ansible.windows.win_package:
+    path: C:\EDRClient\MVEDRSetup_x64.exe
+    arguments:
+      - /quiet
+      - /install
+    state: present

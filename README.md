@@ -21,3 +21,11 @@ Get-WinEvent -LogName Application -MaxEvents 20 | Format-List
 Get-Content .\install.log -Wait -Tail 60
 
 4. Note for Installing Agent Handler: install script seems to always fail at the first time. Then it succeeds after a successful manual installation.
+
+5. ENS cannot be installed using Ansible.
+
+6. ENS cannot be uninstalled using Ansible.
+
+7. EDR client extensions need to be installed manually on ePO
+
+8. EDR client can be done through command line.

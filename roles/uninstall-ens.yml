@@ -1,0 +1,9 @@
+---
+- name: Uninstall ENS
+  hosts: endpoint
+  gather_facts: false
+  vars:
+    ansible_shell_type: powershell
+    ansible_shell_executable: 'C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe'
+  roles:
+    - ens

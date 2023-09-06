@@ -1,0 +1,9 @@
+- name: Uninstall EDR Agent
+  ansible.windows.win_package:
+    path: C:\EDRClient\MVEDRSetup_x64.exe
+    arguments:
+      - /quiet
+      - /uninstall
+    state: present
+
+    # {8A0554C3-4903-4ACC-9E8A-61F8C70B44C6}

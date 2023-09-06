@@ -1,0 +1,4 @@
+---
+# tasks file for edr_client
+- name: Install EDR Client
+  ansible.builtin.import_tasks: install.yml

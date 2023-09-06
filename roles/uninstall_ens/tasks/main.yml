@@ -1,0 +1,4 @@
+---
+# tasks file for uninstall_ens
+- name: Uninstall ENS
+  ansible.builtin.import_tasks: uninstall.yml

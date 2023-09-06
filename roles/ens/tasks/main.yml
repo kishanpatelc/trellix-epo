@@ -1,0 +1,4 @@
+---
+# tasks file for ens
+- name: Install ENS
+  ansible.builtin.import_tasks: install.yml

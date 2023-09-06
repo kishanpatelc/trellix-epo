@@ -1,0 +1,4 @@
+---
+# tasks file for uninstall_edr_client
+- name: Uninstall EDR Client
+  ansible.builtin.import_tasks: uninstall.yml

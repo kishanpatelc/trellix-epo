@@ -1,0 +1,39 @@
+- name: Uninstall Trellix Endpoint Security Adaptive Threat Protection
+  ansible.windows.win_package:
+    product_id: '{377DA1C7-79DE-4102-8DB7-5C2296A3E960}'
+    arguments:
+      - /lev!
+      - 'C:\ENS\logs\uninstall_atp.log'
+    state: absent
+
+- name: Uninstall Trellix Endpoint Security Threat Prevention
+  ansible.windows.win_package:
+    product_id: '{820D7600-089E-486B-860F-279B8119A893}'
+    arguments:
+      - /lev!
+      - 'C:\ENS\logs\uninstall_tp.log'
+    state: absent
+
+- name: Uninstall Trellix Endpoint Security Web Control  
+  ansible.windows.win_package:
+    product_id: '{5974413A-8D95-4D64-B9EE-40DF28186445}'
+    arguments:
+      - /lev!
+      - 'C:\ENS\logs\uninstall_wc.log'
+    state: absent
+
+- name: Uninstall Trellix Endpoint Security Firewall
+  ansible.windows.win_package:
+    product_id: '{6F88C6E9-CAD0-4D03-99E1-161383F9AD6F}'
+    arguments:
+      - /lev!
+      - 'C:\ENS\logs\uninstall_fw.log'
+    state: absent
+
+- name: Uninstall Trellix Endpoint Security Platform
+  ansible.windows.win_package:
+    product_id: '{B16DE18D-4D5D-45F8-92BD-8DC17225AFD8}'
+    arguments:
+      - /lev!
+      - 'C:\ENS\logs\uninstall_platform.log'
+    state: absent
