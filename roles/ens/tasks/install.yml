@@ -1,0 +1,29 @@
+# - name: Creates ENS directory
+#   ansible.windows.win_file:
+#     path: C:\ENS\
+#     state: directory
+
+# - name: Creates ENS Platform directory
+#   ansible.windows.win_file:
+#     path: 'C:\ENS\Endpoint Security Platform'
+#     state: directory
+
+# - name: Copy McAfee_Endpoint_Security_10_7_0 Bundle directory to endpoint
+#   ansible.builtin.copy:
+#     src: /tmp/Trellix_Endpoint_Security_10.7.0.6010.1_Standalone_Client_Install_ENS.zip
+#     dest: C:\ENS\
+#     permissions: 'full-control'
+
+# - name: Unarchive .zip
+#   community.windows.win_unzip:
+#     src: 'C:\ENS\Trellix_Endpoint_Security_10.7.0.6010.1_Standalone_Client_Install_ENS.zip'
+#     dest: 'C:\ENS\'
+#     remote_src: yes
+        
+- name: Install ENS Client 
+  ansible.windows.win_package:
+    path: 'C:\ENS\setupEP.exe'
+    arguments:
+      - ADDLOCAL='tp,fw,wc,atp'
+      - /l*v "C:/ENS/logs"
+    state: present
